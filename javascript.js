@@ -76,15 +76,15 @@ const numbers2 = [12, 21, 38, 5, 45, 37, 6];
 // Otra formna de hacer el promedio
 
 function average() {
-    let i = 0;
-    let sum = 0;
-    let arrayLen = numbers2.length;
+  let i = 0;
+  let sum = 0;
+  let arrayLen = numbers2.length;
 
-    while (i < arrayLen) {
-        sum = sum + numbers2[i++];
-    };
-    return sum / arrayLen;
-};
+  while (i < arrayLen) {
+    sum = sum + numbers2[i++];
+  }
+  return sum / arrayLen;
+}
 
 console.log(`El promedio obtenido es ${average(numbers2)}`);
 
@@ -102,78 +102,93 @@ console.log(`El promedio obtenido es ${average(numbers2)}`);
 // Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados, en caso que existan los elimina para retornar un array sin los elementos duplicados. Puedes usar este array para probar tu función:
 
 const duplicates = [
-    'sushi',
-    'pizza',
-    'burger',
-    'potatoe',
-    'pasta',
-    'ice-cream',
-    'pizza',
-    'chicken',
-    'onion rings',
-    'pasta',
-    'soda',
+  "sushi",
+  "pizza",
+  "burger",
+  "potatoe",
+  "pasta",
+  "ice-cream",
+  "pizza",
+  "chicken",
+  "onion rings",
+  "pasta",
+  "soda",
 ];
 
 function removeDuplicates() {
-    const result = [];
-    duplicates.forEach((item)=>{
-        if(!result.includes(item)){
-    		result.push(item);
-    	};
-    });  
-    return result
-};
+  const result = [];
+  duplicates.forEach((item) => {
+    if (!result.includes(item)) {
+      result.push(item);
+    }
+  });
+  return result;
+}
 
-console.log(removeDuplicates(duplicates))
+console.log(removeDuplicates(duplicates));
 
 // **Iteración #7: Buscador de nombres**
 
 // Crea una función que reciba por parámetro un array y el valor que desea comprobar que existe dentro de dicho array - comprueba si existe el elemento, en caso que existan nos devuelve un true y la posición de dicho elemento y por la contra un false. Puedes usar este array para probar tu función:
 
 const nameFinder = [
-    'Peter',
-    'Steve',
-    'Tony',
-    'Natasha',
-    'Clint',
-    'Logan',
-    'Xabier',
-    'Bruce',
-    'Peggy',
-    'Jessica',
-    'Marc'
+  "Peter",
+  "Steve",
+  "Tony",
+  "Natasha",
+  "Clint",
+  "Logan",
+  "Xabier",
+  "Bruce",
+  "Peggy",
+  "Jessica",
+  "Marc",
 ];
 
 function finderName(item, i) {
-	for (let name of nameFinder) {
-		if (name === i) {
-			return item.indexOf(name);
-		};
-	};
-	return false;
-};
+  for (let name of nameFinder) {
+    if (name === i) {
+      return item.indexOf(name);
+    }
+  }
+  return false;
+}
 
-console.log(finderName(nameFinder, 'Peggy',));
+console.log(finderName(nameFinder, "Peggy"));
 
 // **Iteration #8: Contador de repeticiones**
 
 // Crea una función que nos devuelva el número de veces que se repite cada una de las palabras que lo conforma.  Puedes usar este array para probar tu función:
 
 const counterWords = [
-    'code',
-    'repeat',
-    'eat',
-    'sleep',
-    'code',
-    'enjoy',
-    'sleep',
-    'code',
-    'enjoy',
-    'upgrade',
-    'code'
+  "code",
+  "repeat",
+  "eat",
+  "sleep",
+  "code",
+  "enjoy",
+  "sleep",
+  "code",
+  "enjoy",
+  "upgrade",
+  "code",
 ];
 
-function repeatCounter(param) {
-    // insert code
-}
+function repeatCounter() {
+  counterWords.sort();
+
+  let current = 0;
+  let count = 0;
+  for (let i = 0; i < counterWords.length; i++) {
+    if (counterWords[i] != current) {
+      if (count > 0) {
+        console.log(current + " " + count);
+      };
+      current = counterWords[i];
+      count = 1;
+    } else {
+      count++;
+    };
+  };
+};
+repeatCounter(counterWords);
