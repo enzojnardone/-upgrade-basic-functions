@@ -9,16 +9,16 @@ function sum(numberOne, numberTwo) {
     return numberOne;
   } else {
     return numberTwo;
-  }
-}
+  };
+};
 
 console.log(sum(23838083, 23383038));
 
 // **Iteración #2: Buscar la palabra más larga**
 
-// Completa la función que tomando un array de strings como argumento devuelva el más largo, en caso de que dos strings tenga la misma longitud deberá devolver el primero.
-
-// Puedes usar este array para probar tu función:
+// // Completa la función que tomando un array de strings como argumento devuelva el más largo, 
+// en caso de que dos strings tenga la misma longitud deberá devolver el primero.
+// // Puedes usar este array para probar tu función:
 
 const avengers = [
   "Hulk",
@@ -29,12 +29,16 @@ const avengers = [
   "Captain M.",
 ];
 
-function findLongestWord() {
-  let LongestWord = "0";
-  for (let i = 0; i < avengers.length; i++) {
-    LongestWord = i;
+function findLongestWord(object) {
+  let longestWord = "";
+  let word = "";
+  for (const iterator of object) {
+    if (iterator.length > word) {
+      word = iterator.length;
+      longestWord = iterator;
+    }
   }
-  return LongestWord;
+  return longestWord;
 }
 
 console.log(findLongestWord(avengers));
@@ -48,10 +52,10 @@ console.log(findLongestWord(avengers));
 
 const numbers = [1, 2, 3, 5, 45, 37, 58];
 
-function sumAll() {
+function sumAll(object) {
   let sum = 0;
-  for (let number of numbers) {
-    sum += number;
+  for (let i of object) {
+    sum += i;
   }
   return sum;
 }
@@ -64,24 +68,24 @@ console.log(sumAll(numbers));
 
 const numbers2 = [12, 21, 38, 5, 45, 37, 6];
 
-// function average() {
+// function average(element) {
 //   let i = 0;
-//   for (const number of numbers2) {
-//       i += number;
+//   for (const iterator of element) {
+//       i += iterator;
 //     }
-//     let media = i / numbers2.length;
+//     let media = i / element.length;
 //     return media;
 // };
 
 // Otra formna de hacer el promedio
 
-function average() {
+function average(element) {
   let i = 0;
   let sum = 0;
-  let arrayLen = numbers2.length;
+  let arrayLen = element.length;
 
   while (i < arrayLen) {
-    sum = sum + numbers2[i++];
+    sum = sum + element[i++];
   }
   return sum / arrayLen;
 }
@@ -90,7 +94,8 @@ console.log(`El promedio obtenido es ${average(numbers2)}`);
 
 // **Iteración #5: Calcular promedio de strings**
 
-// Crea una función que reciba por parámetro un array y cuando es un valor number lo sume y de lo contrario cuente la longitud del string y lo sume. Puedes usar este array para probar tu función:
+// // Crea una función que reciba por parámetro un array y cuando es un valor number lo sume y de lo contrario cuente la longitud del string y lo sume. 
+// Puedes usar este array para probar tu función:
 
 // const mixedElements = [6, 1, 'Rayo', 1, 'vallecano', '10', 'upgrade', 8, 'hub'];
 // function averageWord(param) {
@@ -99,7 +104,8 @@ console.log(`El promedio obtenido es ${average(numbers2)}`);
 
 // **Iteración #6: Valores únicos**
 
-// Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados, en caso que existan los elimina para retornar un array sin los elementos duplicados. Puedes usar este array para probar tu función:
+// Crea una función que reciba por parámetro un array y compruebe si existen elementos duplicados,
+// en caso que existan los elimina para retornar un array sin los elementos duplicados. Puedes usar este array para probar tu función:
 
 const duplicates = [
   "sushi",
@@ -115,11 +121,15 @@ const duplicates = [
   "soda",
 ];
 
-function removeDuplicates() {
+console.log(duplicates);
+
+// Con forEach
+
+function removeDuplicates(array) {
   const result = [];
-  duplicates.forEach((item) => {
-    if (!result.includes(item)) {
-      result.push(item);
+  array.forEach((element) => {
+    if (!result.includes(element)) {
+      result.push(element);
     }
   });
   return result;
@@ -127,9 +137,25 @@ function removeDuplicates() {
 
 console.log(removeDuplicates(duplicates));
 
+// Con forof
+
+// function removeDuplicates (array) {
+//   let resultArray = [];
+//   for (const item of array) {
+//     if (!resultArray.includes(item)) {
+//       resultArray.push(item);
+//     };
+//   };
+//   return resultArray;
+// };
+
+// console.log(removeDuplicates(duplicates));
+
 // **Iteración #7: Buscador de nombres**
 
-// Crea una función que reciba por parámetro un array y el valor que desea comprobar que existe dentro de dicho array - comprueba si existe el elemento, en caso que existan nos devuelve un true y la posición de dicho elemento y por la contra un false. Puedes usar este array para probar tu función:
+// // Crea una función que reciba por parámetro un array y el valor que desea comprobar que existe dentro de dicho array -
+// comprueba si existe el elemento, en caso que existan nos devuelve un true y la posición de dicho elemento y por la contra un false.
+// Puedes usar este array para probar tu función:
 
 const nameFinder = [
   "Peter",
@@ -145,20 +171,25 @@ const nameFinder = [
   "Marc",
 ];
 
-function finderName(item, i) {
-  for (let name of nameFinder) {
-    if (name === i) {
-      return item.indexOf(name);
+console.log(nameFinder);
+
+function finderName(element, name) {
+  for (let iterator of element) {
+    if (iterator === name) {
+      return `${true}; la persona se encuentra en la posición ${element.indexOf(
+        name
+      )}`;
     }
   }
-  return false;
+  return `${false}; la persona no existe`;
 }
 
-console.log(finderName(nameFinder, "Peggy"));
+console.log(finderName(nameFinder, "Natasha"));
 
 // **Iteration #8: Contador de repeticiones**
 
-// Crea una función que nos devuelva el número de veces que se repite cada una de las palabras que lo conforma.  Puedes usar este array para probar tu función:
+// Crea una función que nos devuelva el número de veces que se repite cada una de las palabras que lo conforma.
+// Puedes usar este array para probar tu función:
 
 const counterWords = [
   "code",
@@ -174,21 +205,35 @@ const counterWords = [
   "code",
 ];
 
-function repeatCounter() {
-  counterWords.sort();
+// function repeatCounter(element) {
+//   counterWords.sort();
 
-  let current = 0;
-  let count = 0;
-  for (let i = 0; i < counterWords.length; i++) {
-    if (counterWords[i] != current) {
-      if (count > 0) {
-        console.log(current + " " + count);
-      };
-      current = counterWords[i];
-      count = 1;
+//   let word = 0;
+//   let counter = 0;
+//   for (let i = 0; i < element.length; i++) {
+//     if (element[i] != word) {
+//       if (counter > 0) {
+//         console.log(`La palabra ${word} se repite ${counter} veces`);
+//       };
+//       word = element[i];
+//       counter = 1;
+//     }else {
+//       counter++;
+//     };
+//   };
+// };
+// repeatCounter(counterWords);
+
+function repeatCounter(element) {
+  const counter = {};
+  for (let i of element) {
+    if (counter[i]) {
+      counter[i] += 1;
     } else {
-      count++;
-    };
-  };
-};
+      counter[i] = 1;
+    }
+  }
+  console.log(counter);
+}
+
 repeatCounter(counterWords);
